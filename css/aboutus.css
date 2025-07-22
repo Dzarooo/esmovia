@@ -57,11 +57,11 @@ main {
     gap: 20px;
 }
 
-a {
+main a {
     color: black;
 }
 
-a:visited {
+main a:visited {
     color: black;
 }
 
@@ -126,4 +126,12 @@ a:visited {
 
 .feedback-card button:hover {
     background-color: #0056b3;
+}
+
+#closeAllBtn {
+    appearance: none;
+    border-radius:10px;
+    border: 2px solid #bbb;
+    padding:5px;
+    font-size:15px;
 }
