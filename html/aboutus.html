@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About us</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/aboutus.css">
 </head>
@@ -19,7 +19,64 @@
             <a href="aboutus.html" class="activeLink">About us</a>
         </nav>
     </header>
-    <content class="mainContainer"></content>
+    <main class="main">
+        <div class="card">
+    <div class="card-header">
+        <h1>What is this website?</h1>
+        <button class="toggle-btn">v</button>
+    </div>
+    <div class="toggle-content">
+        <p>This website teaches you how to defuse a bomb in the game "Keep Talking and Nobody Explodes".</p>
+    </div>
+</div>
+
+        <div class="card">
+            <h1>What is Keep Talking and Nobody Explodes?</h1>
+        </div>
+        <div class="card">
+            <h1>What is DogAPI?</h1>
+        </div>
+        
+    </main>
+<script>
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.card');
+            const content = card.querySelector('.toggle-content');
+            const isExpanded = content.classList.contains('expanded');
+
+            if (isExpanded) {
+                // 1. Fade out text quickly
+                content.classList.add('hiding-text');
+
+                // 2. After opacity fade, close container smoothly
+                setTimeout(() => {
+                    content.classList.remove('expanded');
+                }, 200);
+
+                // 3. After max-height transition, reset text opacity for next open
+                setTimeout(() => {
+                    content.classList.remove('hiding-text');
+                }, 800); // 200 + 600 = total transition time
+
+                btn.classList.remove('rotated');
+            } else {
+                // Opening: expand container first
+                content.classList.add('expanded');
+
+                // Then fade in text after a slight delay
+                setTimeout(() => {
+                    content.classList.remove('hiding-text');
+                }, 300);
+
+                btn.classList.add('rotated');
+            }
+        });
+    });
+</script>
+
+
+
 </body>
 
 </html>
