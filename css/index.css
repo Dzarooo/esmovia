@@ -1,29 +1,30 @@
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+header {
+    width: 100vw;
+    height: 10vh;
+    background: linear-gradient(90deg, rgba(61, 61, 61, 1) 0%, rgba(51, 51, 51, 1) 15%, rgba(51, 51, 51, 1) 85%, rgba(61, 61, 61, 1) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-body {
+main {
   font-family: 'Arial', sans-serif;
   color: #fff;
   background-color: #222;
-}
-
-/* Main Section Styling */
-main {
+  padding-top: 10vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   position: relative;
-  overflow: hidden;
   z-index: 1;
 }
 
-/* Background Image and Blur Effect */
 main::before {
   content: '';
   position: absolute;
@@ -34,11 +35,10 @@ main::before {
   background-image: url('https://image.api.playstation.com/cdn/EP0633/CUSA06561_00/RiTkX1RIAyKrQpeZrFgGob5xotk1LCeB.jpg');
   background-size: cover;
   background-position: center;
-  filter: blur(5px); /* Apply blur effect only to the background */
-  z-index: -1; /* Keep it behind all other content */
+  filter: blur(5px);
+  z-index: -1;
 }
 
-/* Overlay Effect */
 main::after {
   content: '';
   position: absolute;
@@ -46,21 +46,19 @@ main::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
-  z-index: -1; /* Keep overlay below text */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
-/* Main Content Styling (Text Section) */
 main div {
-  z-index: 2; /* Ensures text is above the background */
+  z-index: 2;
   text-align: center;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.4); /* Same as background behind text */
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-  margin-top: -50px; /* Moves text a little higher */
 }
 
-h1 {
+#mainText {
   font-size: 3rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -68,7 +66,6 @@ h1 {
   animation: fadeIn 2s ease-in-out;
 }
 
-/* Animation for Heading */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -80,10 +77,9 @@ h1 {
   }
 }
 
-/* Game Description Section Inside Main */
 .game-description {
-  z-index: 2; /* Ensures text is above the background */
-  background-color: rgba(0, 0, 0, 0.4); /* Same as text background */
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 40px;
   text-align: center;
   font-size: 1.2rem;
