@@ -4,3 +4,7 @@ img{
 table, td{
     border: solid black 1px;
 }
+main{
+    display: flex;
+    justify-content: center;
+}
