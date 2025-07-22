@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About us</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/aboutus.css" />
+</head>
+
+<body>
+    <header>
+        <h1 class="textGradient">Bomb defusing tutorial for interested</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="manual.html">Manual</a>
+            <a href="dog.html">Dog break</a>
+            <a href="aboutus.html" class="activeLink">About us</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="card">
+            <div class="card-header">
+                <h1>What is this website?</h1>
+                <button class="toggle-btn">v</button>
+            </div>
+            <div class="toggle-content">
+                <p>This website teaches you how to defuse a bomb in the game "Keep Talking and Nobody Explodes".</p>
+                <p>It also contains an API called <a href="https://dog.ceo/dog-api/">DogAPI</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h1>Who are we?</h1>
+                <button class="toggle-btn">v</button>
+            </div>
+            <div class="toggle-content">
+                <p>We are polish students from a technical high school called SCI, which is located in Szczecin.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h1>What is "Keep Talking and Nobody Explodes"?</h1>
+                <button class="toggle-btn">v</button>
+            </div>
+            <div class="toggle-content">
+                <p>"Keep Talking and Nobody Explodes" is a cooperative party game.</p>
+                <p>One player tries to defuse a bomb using instructions from others who read the manual.</p>
+                <p>The game challenges communication and problem-solving skills under time pressure.</p>
+                <p><a href="https://store.steampowered.com/app/341800/Keep_Talking_and_Nobody_Explodes/">Feel free to check it out here</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h1>What is DogAPI?</h1>
+                <button class="toggle-btn">v</button>
+            </div>
+            <div class="toggle-content">
+                <p>DogAPI is a free API that provides random dog images and facts.</p>
+                <p>This site uses DogAPI to fetch and display cute dog pictures for fun and relaxation.</p>
+                <p>You can learn more at <a href="https://dog.ceo/dog-api/">dog.ceo/dog-api</a>.</p>
+            </div>
+        </div>
+
+        <button id="closeAllBtn">Close All</button>
+
+        <section class="feedback-card">
+            <h2>Give us feedback!</h2>
+            <div class="stars">
+                <span data-star="1">★</span>
+                <span data-star="2">★</span>
+                <span data-star="3">★</span>
+                <span data-star="4">★</span>
+                <span data-star="5">★</span>
+            </div>
+            <textarea id="feedbackText" rows="4" placeholder="Write your feedback here..."></textarea>
+            <button id="submitFeedback">Submit Feedback</button>
+            <p id="feedbackMessage" style="display: none;">Thanks for your feedback!</p>
+        </section>
+    </main>
+
+    <script>
+        function closeSection(content, btn) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            requestAnimationFrame(() => {
+                content.style.maxHeight = '0';
+            });
+            btn.classList.remove('rotated');
+
+            content.addEventListener('transitionend', function handler() {
+                content.classList.remove('expanded');
+                content.style.display = 'none';
+                content.style.maxHeight = null;
+                content.removeEventListener('transitionend', handler);
+            });
+        }
+
+        function openSection(content, btn) {
+            content.style.display = 'block';
+            const height = content.scrollHeight + 'px';
+            content.style.maxHeight = '0';
+
+            requestAnimationFrame(() => {
+                content.classList.add('expanded');
+                content.style.maxHeight = height;
+            });
+            btn.classList.add('rotated');
+
+            content.addEventListener('transitionend', function handler() {
+                content.style.maxHeight = null;
+                content.removeEventListener('transitionend', handler);
+            });
+        }
+
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.card');
+                const content = card.querySelector('.toggle-content');
+                const isExpanded = content.classList.contains('expanded');
+
+                if (isExpanded) {
+                    closeSection(content, btn);
+                } else {
+                    openSection(content, btn);
+                }
+            });
+        });
+
+        document.getElementById('closeAllBtn').addEventListener('click', () => {
+            document.querySelectorAll('.card').forEach(card => {
+                const content = card.querySelector('.toggle-content');
+                const btn = card.querySelector('.toggle-btn');
+                if (content.classList.contains('expanded')) {
+                    closeSection(content, btn);
+                }
+            });
+        });
+        let selectedRating = 0;
+        document.querySelectorAll('.stars span').forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.dataset.star);
+                document.querySelectorAll('.stars span').forEach(s => {
+                    s.classList.toggle('selected', parseInt(s.dataset.star) <= selectedRating);
+                });
+            });
+        });
+
+        document.getElementById('submitFeedback').addEventListener('click', () => {
+            const text = document.getElementById('feedbackText').value;
+            if (selectedRating === 0 || text.trim() === '') {
+                alert('Please select a rating and write feedback.');
+                return;
+            }
+
+            console.log('Rating:', selectedRating);
+            console.log('Feedback:', text);
+
+            document.getElementById('feedbackMessage').style.display = 'block';
+            document.getElementById('feedbackText').value = '';
+            document.querySelectorAll('.stars span').forEach(s => s.classList.remove('selected'));
+            selectedRating = 0;
+        });
+    </script>
+</body>
+
+</html>
