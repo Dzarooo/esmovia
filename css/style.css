@@ -33,7 +33,7 @@ header a:hover {
     color:white;
 }
 
-content {
+main {
     display:block;
     width:100vw;
     min-height:90vh;
