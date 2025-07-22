@@ -57,15 +57,6 @@ main {
     gap: 20px;
 }
 
-a {
-    color: black;
-}
-
-a:visited {
-    color: black;
-}
-
-/* Feedback Form */
 .feedback-card {
     width: 600px;
     background-color: #f2f2f2;
