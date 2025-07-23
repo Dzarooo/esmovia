@@ -64,7 +64,6 @@ main a:visited {
     color: black;
 }
 
-/* Feedback Form */
 .feedback-card {
     width: 600px;
     background-color: #f2f2f2;
@@ -88,6 +87,10 @@ main a:visited {
     display: flex;
     justify-content: center;
     gap: 8px;
+}
+
+.stars span {
+    cursor: pointer;
 }
 
 .star {
@@ -117,14 +120,16 @@ main a:visited {
     font-size: 16px;
     border: none;
     border-radius: 6px;
-    background-color: #007BFF;
+    background: linear-gradient(180deg, #fc3c11 0%, #ff6f1b 100%);
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .feedback-card button:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
 #closeAllBtn {
