@@ -8,3 +8,13 @@ main{
     display: flex;
     justify-content: center;
 }
+.wire-container{
+    width: 300px;
+}
+.wire-container > tbody > tr > td{
+    border-style: none;
+}
+hr{
+    height: 10px;
+    background-color: black;
+}
