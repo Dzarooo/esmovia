@@ -7,19 +7,35 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dog.css">
+    <script src="../javascript/index.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Bomb defusing tutorial for interested</h1>
+        <h1 class="textGradient">Bomb defusing tutorial for interested</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="manual.html" >Manual</a>
-            <a href="dog.html" class="activeLink">Dog pictures</a>
+            <a href="manual.html">Manual</a>
+            <a href="dog.html" class="activeLink">Dog break</a>
             <a href="aboutus.html">About us</a>
         </nav>
     </header>
-    <content class="mainContainer"></content>
+    <main>
+        <div>
+            <p>Every bomb defuser needs a</p>
+            <p class="textGradient">Break.</p>
+            <p>Here, generate some cute dog pictures to lighten the mood.</p>
+            <button onClick="getRandomImage()" id="generateButton">Generate</button><br>
+
+            <div id="dogImageContainer">
+
+                <img id="dog_image_1" src="https://dog.ceo/img/dog-api-logo.svg">
+                <img id="dog_image_2" src="https://dog.ceo/img/dog-api-logo.svg">
+                <img id="dog_image_3" src="https://dog.ceo/img/dog-api-logo.svg">
+
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
