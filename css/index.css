@@ -15,7 +15,6 @@ main {
   font-family: 'Arial', sans-serif;
   color: #fff;
   background-color: #222;
-  padding-top: 10vh;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
